@@ -1,0 +1,464 @@
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, system-ui, sans-serif;
+    background: linear-gradient(145deg, #0f0f1a 0%, #1a1a2e 40%, #16213e 100%);
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #e8e8f0;
+    padding: 1rem;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* ============================================================
+   CONTAINER
+   ============================================================ */
+.container {
+    max-width: 520px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 40px;
+    padding: 1.8rem 1.5rem 1.5rem;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.7), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header {
+    text-align: center;
+    margin-bottom: 1.2rem;
+}
+
+.header h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+.header .subtitle {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    margin-top: -0.2rem;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.stat-card {
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
+    padding: 0.6rem 0.3rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: all 0.2s;
+}
+
+.stat-card:hover {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.stat-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    opacity: 0.4;
+    font-weight: 600;
+}
+
+.stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 0.1rem;
+    transition: all 0.15s;
+    font-variant-numeric: tabular-nums;
+}
+
+.stat-value.coins {
+    color: #fbbf24;
+}
+
+.stat-value.cps {
+    color: #34d399;
+}
+
+/* ============================================================
+   CLICK AREA
+   ============================================================ */
+.click-area {
+    display: flex;
+    justify-content: center;
+    margin: 1.2rem 0 1.5rem;
+    position: relative;
+}
+
+.meme-btn {
+    background: radial-gradient(circle at 35% 35%, #fcd34d, #d97706);
+    border: none;
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 12px 0 #92400e, 
+                0 20px 60px rgba(245, 158, 11, 0.25),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.2),
+                inset 0 4px 8px rgba(255, 255, 255, 0.3);
+    transition: all 0.06s linear;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    touch-action: manipulation;
+}
+
+.meme-btn:active {
+    transform: translateY(8px) scale(0.96);
+    box-shadow: 0 4px 0 #92400e, 
+                0 15px 40px rgba(245, 158, 11, 0.2);
+}
+
+.meme-btn .meme-emoji {
+    font-size: 5.5rem;
+    line-height: 1;
+    transition: transform 0.1s;
+    pointer-events: none;
+}
+
+.meme-btn:active .meme-emoji {
+    transform: scale(0.85);
+}
+
+/* Click ripple effect */
+.click-ripple {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 3px solid rgba(251, 191, 36, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s;
+}
+
+.meme-btn:active .click-ripple {
+    opacity: 1;
+    inset: -16px;
+    border-color: rgba(251, 191, 36, 0.6);
+    transition: all 0.05s;
+}
+
+/* ============================================================
+   FLOATING COINS (particles)
+   ============================================================ */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    font-size: 1.4rem;
+    animation: floatUp 1s ease-out forwards;
+    pointer-events: none;
+    opacity: 1;
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(0.5) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(1.2) rotate(40deg);
+    }
+}
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.7rem 1.2rem;
+    border-radius: 60px;
+    text-align: center;
+    border-left: 5px solid #fbbf24;
+    margin: 0.2rem 0 1rem;
+    min-height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-left-width: 5px;
+    word-break: break-word;
+}
+
+.toast.good {
+    border-left-color: #34d399;
+}
+
+.toast.bad {
+    border-left-color: #f87171;
+}
+
+/* ============================================================
+   UPGRADES
+   ============================================================ */
+.upgrades {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 1rem 0 1rem;
+}
+
+.upgrade-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.6rem 1rem 0.6rem 1.2rem;
+    border-radius: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: all 0.2s ease;
+    gap: 0.5rem;
+}
+
+.upgrade-item:hover {
+    background: rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.08);
+}
+
+.upgrade-item .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
+.upgrade-item .name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.upgrade-item .desc {
+    font-size: 0.7rem;
+    opacity: 0.4;
+}
+
+.upgrade-item .cost {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-left: 0.3rem;
+    font-weight: 500;
+}
+
+.upgrade-item button {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.4rem 1.2rem;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.1s ease;
+    box-shadow: 0 4px 0 #1d4ed8;
+    white-space: nowrap;
+    flex-shrink: 0;
+    touch-action: manipulation;
+}
+
+.upgrade-item button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #1d4ed8;
+}
+
+.upgrade-item button:disabled {
+    opacity: 0.25;
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #1d4ed8;
+    pointer-events: none;
+    filter: grayscale(0.5);
+}
+
+/* ============================================================
+   ACTIONS
+   ============================================================ */
+.actions {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.action-btn {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #c8c8d8;
+    padding: 0.6rem;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    touch-action: manipulation;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.action-btn:active {
+    transform: scale(0.97);
+}
+
+#resetBtn {
+    color: #f87171;
+    border-color: rgba(248, 113, 113, 0.15);
+}
+
+#resetBtn:hover {
+    background: rgba(248, 113, 113, 0.1);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+    text-align: center;
+    font-size: 0.65rem;
+    opacity: 0.2;
+    margin-top: 1rem;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.2rem 1rem 1.2rem;
+        border-radius: 28px;
+    }
+
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.4rem;
+    }
+
+    .stat-card {
+        padding: 0.5rem 0.2rem;
+        border-radius: 12px;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+
+    .meme-btn {
+        width: 140px;
+        height: 140px;
+    }
+
+    .meme-btn .meme-emoji {
+        font-size: 4.5rem;
+    }
+
+    .upgrade-item {
+        padding: 0.5rem 0.8rem 0.5rem 1rem;
+        border-radius: 40px;
+    }
+
+    .upgrade-item .name {
+        font-size: 0.85rem;
+    }
+
+    .upgrade-item button {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.9rem;
+    }
+
+    .toast {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        min-height: 2.8rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .meme-btn {
+        width: 120px;
+        height: 120px;
+    }
+
+    .meme-btn .meme-emoji {
+        font-size: 3.8rem;
+    }
+
+    .stat-value {
+        font-size: 0.95rem;
+    }
+}
+
+/* ============================================================
+   UTILITY — Dark scrollbar
+   ============================================================ */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+}

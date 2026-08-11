@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#1a1a2e" />
+    <meta name="description" content="Meme Clicker Tycoon - Click the frog, build your meme empire!" />
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐸</text></svg>" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css" />
+    
+    <title>🐸 Meme Clicker Tycoon</title>
+</head>
+<body>
+
+    <div class="container" id="app">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🐸 Meme Tycoon</h1>
+            <p class="subtitle">click the frog → become legend</p>
+        </div>
+
+        <!-- STATS -->
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-label">🪙 Coins</div>
+                <div class="stat-value coins" id="coinDisplay">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">⚡ Per Second</div>
+                <div class="stat-value cps" id="cpsDisplay">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">👆 Clicks</div>
+                <div class="stat-value" id="clickDisplay">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🏆 Level</div>
+                <div class="stat-value" id="levelDisplay">1</div>
+            </div>
+        </div>
+
+        <!-- CLICK AREA -->
+        <div class="click-area">
+            <button class="meme-btn" id="clickBtn" aria-label="Click to earn coins">
+                <span class="meme-emoji">🐸</span>
+                <span class="click-ripple"></span>
+            </button>
+        </div>
+
+        <!-- FLOATING COINS (particle effect) -->
+        <div id="particles"></div>
+
+        <!-- EVENT TOAST -->
+        <div class="toast" id="toast">💡 Click the frog to start!</div>
+
+        <!-- UPGRADES -->
+        <div class="upgrades" id="upgradesContainer">
+            <!-- rendered by JavaScript -->
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="actions">
+            <button class="action-btn" id="saveBtn">💾 Save</button>
+            <button class="action-btn" id="resetBtn">🗑️ Reset</button>
+        </div>
+
+        <!-- VERSION -->
+        <div class="footer">v1.0 · Made with 🧠 + 🤖</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

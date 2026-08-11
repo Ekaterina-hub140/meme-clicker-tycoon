@@ -1,0 +1,153 @@
+# 🐸 Meme Clicker Tycoon
+
+> A satirical clicker game about the absurdity of internet fame. Click the frog, build your meme empire!
+
+![Game Screenshot](screenshots/desktop.png)
+
+---
+
+## 🎮 Live Demo
+
+**[Play the game →](https://YOUR_USERNAME.github.io/meme-clicker-tycoon/)**
+
+---
+
+## ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🪙 Click to earn | Click the frog to earn meme coins |
+| 📈 5 upgrades | Each with exponential scaling and max levels |
+| 🎲 Random events | Good & bad events keep it interesting |
+| 💾 Auto-save | Saves every 15 seconds + on page close |
+| 📱 Responsive | Works on desktop, tablet, and mobile |
+| 🏠 PWA support | Installable on mobile devices |
+| ⌨️ Keyboard shortcuts | Space to click, Ctrl+S to save |
+
+---
+
+## 🧠 Design Decisions
+
+### Why vanilla JavaScript?
+The game is self-contained with zero dependencies. It loads instantly, works offline, and has no external API calls. This makes it easy to review, run, and modify.
+
+### Why localStorage?
+No server needed — perfect for a clicker game where all progress is client-side. Saves are automatic and work offline.
+
+### Why this upgrade curve?
+Each upgrade has a 1.5x–2.2x cost multiplier to create satisfying exponential growth. Max levels prevent infinite scaling and give players a sense of completion.
+
+### Why PWA?
+Adding a manifest and service worker shows understanding of modern web standards. It makes the game installable on phones and work offline — bonus points for a junior role.
+
+---
+
+## 🏗️ Architecture
+┌─────────────┐
+│ Game State │ ← single source of truth
+└──────┬──────┘
+│
+▼
+┌─────────────┐
+│ Render() │ ← updates DOM from state
+└──────┬──────┘
+│
+▼
+┌─────────────┐
+│ User Input │ ← clicks, upgrades, buttons
+└──────┬──────┘
+│
+▼
+┌─────────────┐
+│ Update State│ ← modify state, re-render
+└──────┬──────┘
+│
+▼
+┌─────────────┐
+│ Save/Load │ ← localStorage persistence
+└─────────────┘
+
+---
+
+## 🚀 How to Run
+
+### Option 1: Open directly (no server needed)
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/meme-clicker-tycoon.git
+   cd meme-clicker-tycoon
+2. Open index.html in any browser
+
+3. Start clicking! 🐸
+
+### Option 2: Local server (optional)
+# Using Python
+python3 -m http.server 8000
+# Then open http://localhost:8000
+
+
+### Option 3: GitHub Pages (recommended)
+Push to GitHub
+
+Go to Settings → Pages
+
+Select main branch and save
+
+Your game is live at username.github.io/meme-clicker-tycoon/
+
+🎯 Game Progression
+Milestone	Goal
+🌱 Start	Click the frog to earn coins
+🔧 First upgrade	Buy "Better Meme" (10 coins)
+⚡ Passive income	Buy "Social Media" (50 coins)
+🏭 Scaling	Buy "Meme Factory" (200 coins)
+🚀 Exponential	Buy "Viral Boost" (1000 coins)
+⭐ Endgame	Max out all upgrades
+🤖 AI Usage
+This project was built using AI tools (GLM-5.2 / ChatGPT) for:
+
+Area	How AI helped
+Code structure	Initial architecture suggestions
+Event ideas	Generated the random event pool
+UI/UX	Styling recommendations
+Documentation	README template and structure
+Debugging	Quick fixes and edge cases
+My role: All decisions (tech stack, game design, balancing, final implementation, and code review) were made by me.
+
+📦 Tech Stack
+Layer	Technology
+Frontend	Vanilla HTML5 + CSS3 + JavaScript (ES6)
+Persistence	localStorage
+PWA	Manifest + Service Worker
+Deployment	GitHub Pages
+AI Tools	GLM-5.2 / ChatGPT (assistance only)
+🔮 What I'd Improve with More Time
+□ Prestige system — reset progress for permanent bonuses
+□ Particle effects — more visual feedback on clicks
+□ Sound effects — satisfying clicks and upgrade sounds
+□ Leaderboard — using localStorage + optional sharing
+□ Achievements — milestones with badges
+□ Dark/light theme — user preference toggle
+□ More meme themes — different meme characters
+📸 Screenshots
+Desktop	Mobile
+https://screenshots/desktop.png	https://screenshots/mobile.png
+📝 Time Spent
+~4 hours total:
+
+Phase	Time
+Planning & design	30 min
+Core game logic	60 min
+UI & styling	45 min
+Polish & animations	30 min
+PWA + deployment	30 min
+Documentation	45 min
+📄 License
+This project was created as a test task. Feel free to use it as a reference or portfolio piece.
+
+🙏 Acknowledgements
+Z.ai / GLM-5.2 — AI assistance
+
+The internet meme community — for inspiration
+
+Built with 🧠 + 🤖
