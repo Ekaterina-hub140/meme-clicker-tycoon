@@ -74,7 +74,7 @@ Adding a manifest and service worker shows understanding of modern web standards
 ### Option 1: Open directly (no server needed)
 1. Clone the repo:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/meme-clicker-tycoon.git
+   git clone https://github.com/Ekaterina-hub140/meme-clicker-tycoon.git
    cd meme-clicker-tycoon
 2. Open index.html in any browser
 
@@ -86,14 +86,9 @@ python3 -m http.server 8000
 # Then open http://localhost:8000
 
 
-### Option 3: GitHub Pages (recommended)
-Push to GitHub
+### Option 3: GitHub Pages 
 
-Go to Settings → Pages
-
-Select main branch and save
-
-Your game is live at username.github.io/meme-clicker-tycoon/
+Find the game at https://Ekaterina-hub140.github.io/meme-clicker-tycoon/
 
 🎯 Game Progression
 Milestone	Goal
